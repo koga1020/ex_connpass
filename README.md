@@ -1,21 +1,34 @@
 # ExConnpass
 
-**TODO: Add description**
+Elixir wrapper for [connpass api](https://connpass.com/about/api/).
 
 ## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `ex_connpass` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:ex_connpass, "~> 0.1.0"}
+    {:ex_connpass, git: "https://github.com/koga1020/ex_connpass.git"}
   ]
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/ex_connpass>.
+## Usage
 
+```console
+$ mix deps.get
+$ iex -S mix
+```
+
+```elixir
+iex> ExConnpass.run(%{query: [keyword: "elixir"]})
+```
+
+## Config
+
+If you want to change the domain when running the test, you can change api_base_url like this:
+
+```elixir
+import Config
+
+config :ex_connpass, api_base_url: "http://localhost:8081/"
+```
