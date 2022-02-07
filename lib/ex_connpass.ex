@@ -16,7 +16,9 @@ defmodule ExConnpass do
   end
 
   def build_url(command, %{query: query}, _data) do
-    base_url = Application.get_env(:ex_connpass, :api_base_url, "https://connpass.com/api/v1/event/")
+    base_url =
+      Application.get_env(:ex_connpass, :api_base_url, "https://connpass.com/api/v1/event/")
+
     query_string = URI.encode_query(query)
 
     api_url =
