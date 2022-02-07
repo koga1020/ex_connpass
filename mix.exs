@@ -22,6 +22,7 @@ defmodule ExConnpass.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:commandex, "~> 0.4.1"},
       {:httpoison, "~> 1.8.0"},
       {:jason, "~> 1.3.0"},
       {:plug_cowboy, "~> 2.0", only: :test}
