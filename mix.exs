@@ -1,11 +1,17 @@
 defmodule ExConnpass.MixProject do
   use Mix.Project
 
+  @version "0.1.0"
+  @scm_url "https://github.com/koga1020/ex_connpass"
+
   def project do
     [
       app: :ex_connpass,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.13",
+      source_url: @scm_url,
+      description: "Elixir wrapper for connpass api.",
+      package: package(),
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -23,9 +29,17 @@ defmodule ExConnpass.MixProject do
   defp deps do
     [
       {:commandex, "~> 0.4.1"},
+      {:ex_doc, "~> 0.28.0", only: :dev, runtime: false},
       {:httpoison, "~> 1.8.0"},
       {:jason, "~> 1.3.0"},
       {:plug_cowboy, "~> 2.0"}
+    ]
+  end
+
+  defp package() do
+    [
+      licenses: ["MIT"],
+      links: %{"GitHub" => @scm_url}
     ]
   end
 end
