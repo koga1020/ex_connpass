@@ -6,11 +6,15 @@ defmodule ExConnpass.Application do
   use Application
 
   @impl true
-  def start(_type, _args) do
-    children = [
-      # Starts a worker by calling: ExConnpass.Worker.start_link(arg)
-      # {ExConnpass.Worker, arg}
-    ]
+  def start(_type, args) do
+    children =
+      case args do
+        [env: :test] ->
+          [{Plug.Cowboy, scheme: :http, plug: ExConnpass.MockServer, options: [port: 8081]}]
+
+        _ ->
+          []
+      end
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
