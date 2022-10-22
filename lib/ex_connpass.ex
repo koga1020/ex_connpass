@@ -42,8 +42,24 @@ defmodule ExConnpass do
     end)
   end
 
-  def decode(command, _params, %{response: %HTTPoison.Response{body: body}}) do
-    %{"events" => events} = Jason.decode!(body)
+  def decode(command, %{decode_opts: decode_opts}, %{response: %HTTPoison.Response{body: body}}) do
+    opts =
+      case decode_opts do
+        nil ->
+          []
+
+        decode_opts ->
+          decode_opts
+      end
+
+    events =
+      body
+      |> Jason.decode!(opts)
+      |> then(fn
+        %{"events" => events} -> events
+        %{events: events} -> events
+        _ -> []
+      end)
 
     put_data(command, :events, events)
   end

@@ -37,15 +37,29 @@ defmodule ExConnpassTest do
     end
   end
 
-  test "decode/3" do
-    %{data: data} =
-      ExConnpass.decode(%ExConnpass{}, %{}, %{
-        response: %HTTPoison.Response{
-          body:
-            "{\"events\":[{\"event_id\":1,\"title\":\"sample event\"}],\"results_available\":100,\"results_returned\":1,\"results_start\":1}"
-        }
-      })
+  describe "decode/3" do
+    test "no decode_opts" do
+      %{data: data} =
+        ExConnpass.decode(%ExConnpass{}, %{decode_opts: nil}, %{
+          response: %HTTPoison.Response{
+            body:
+              "{\"events\":[{\"event_id\":1,\"title\":\"sample event\"}],\"results_available\":100,\"results_returned\":1,\"results_start\":1}"
+          }
+        })
 
-    assert data.events == [%{"event_id" => 1, "title" => "sample event"}]
+      assert data.events == [%{"event_id" => 1, "title" => "sample event"}]
+    end
+
+    test "exist decode_opts" do
+      %{data: data} =
+        ExConnpass.decode(%ExConnpass{}, %{decode_opts: [keys: :atoms]}, %{
+          response: %HTTPoison.Response{
+            body:
+              "{\"events\":[{\"event_id\":1,\"title\":\"sample event\"}],\"results_available\":100,\"results_returned\":1,\"results_start\":1}"
+          }
+        })
+
+      assert data.events == [%{event_id: 1, title: "sample event"}]
+    end
   end
 end
