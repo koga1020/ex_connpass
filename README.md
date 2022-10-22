@@ -7,7 +7,7 @@ Elixir wrapper for [connpass api](https://connpass.com/about/api/).
 ```elixir
 def deps do
   [
-    {:ex_connpass, "~> 0.1.0"}
+    {:ex_connpass, "~> 0.2.0"}
   ]
 end
 ```
