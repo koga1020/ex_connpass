@@ -1,7 +1,7 @@
 defmodule ExConnpass.MixProject do
   use Mix.Project
 
-  @version "0.2.0"
+  @version "0.2.1"
   @scm_url "https://github.com/koga1020/ex_connpass"
 
   def project do

@@ -5,6 +5,15 @@ See [Conventional Commits](Https://conventionalcommits.org) for commit guideline
 
 <!-- changelog -->
 
+## [v0.2.1](https://github.com/koga1020/ex_connpass/compare/v0.2.0...v0.2.1) (2022-10-22)
+
+
+
+
+### Bug Fixes:
+
+* missed param field
+
 ## [v0.2.0](https://github.com/koga1020/ex_connpass/compare/v0.1.0...v0.2.0) (2022-10-22)
 
 
