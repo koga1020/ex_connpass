@@ -5,6 +5,7 @@ defmodule ExConnpass do
 
   command do
     param :query
+    param :decode_opts
 
     data :api_url
     data :events
